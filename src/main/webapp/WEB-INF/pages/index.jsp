@@ -15,7 +15,6 @@
         <th>Фамилия</th>
         <th>Имя</th>
         <th>Отчество</th>
-        <th>Должность</th>
         <th>ДР</th>
         <th>Действия</th>
     </tr>
@@ -25,8 +24,7 @@
             <td>${employee.lastName}</td>
             <td>${employee.firstName}</td>
             <td>${employee.patronymic}</td>
-            <td>${employee.position}</td>
-            <td>${employee.dateBirth}</td>
+            <td>${employee.birthday}</td>
             <td>
                 <a href="/edit/${employee.id}">Изменить</a>
                 <a href="/delete/${employee.id}">Удалить</a>

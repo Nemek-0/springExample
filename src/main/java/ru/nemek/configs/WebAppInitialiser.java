@@ -10,7 +10,7 @@ public class WebAppInitialiser extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected Class<?>[] getRootConfigClasses() {
         // TODO Auto-generated method stub
-        return new Class[]{};
+        return new Class[]{HibernateConfig.class};
     }
 
     @Override
