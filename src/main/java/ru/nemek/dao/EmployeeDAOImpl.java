@@ -40,7 +40,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public List getAll() {
-        System.out.println("Тут");
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from Employee").list();
     }

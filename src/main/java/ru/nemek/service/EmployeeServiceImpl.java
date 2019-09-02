@@ -43,7 +43,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> getAll() {
         List<Employee> list = new ArrayList<>();
-        System.out.println(employeeDAO.getAll());
         for(Object employee : employeeDAO.getAll())
             list.add((Employee) employee);
         return list;
