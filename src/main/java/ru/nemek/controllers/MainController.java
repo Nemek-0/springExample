@@ -1,8 +1,6 @@
 package  ru.nemek.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.CustomEditorConfigurer;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -10,13 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.nemek.editor.LocalDateEditor;
 import ru.nemek.entities.Employee;
 import ru.nemek.service.EmployeeService;
-import ru.nemek.validates.EmployeeValidate;
 
-import java.beans.PropertyEditorSupport;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @Controller
