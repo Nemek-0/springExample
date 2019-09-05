@@ -7,16 +7,16 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/app.css">
 </head>
 <body>
-    <form id="edit" action="/edit" method="POST">
-        <input type="hidden" name="id" value="${employee.id}">
+    <form id="edit" action="/add" method="POST">
+
         <label for="lastName">Фамилия</label>
-        <input type="text" name="lastName" value="${employee.lastName}" required>
+        <input type="text" name="lastName" required>
         <label for="firstName">Имя</label>
-        <input type="text" name="firstName"  value="${employee.firstName}" required>
+        <input type="text" name="firstName" required>
         <label for="patronymic">Отчество</label>
-        <input type="text" name="patronymic"  value="${employee.patronymic}">
+        <input type="text" name="patronymic">
         <label for="date">День рождения</label>
-        <input type="date" name="birthday"  value="${employee.birthday}">
+        <input type="date" name="birthday">
         <input type="submit" value="Сохранить">
     </form>
 </body>
