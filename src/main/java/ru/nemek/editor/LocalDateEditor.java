@@ -7,16 +7,11 @@ import java.util.Date;
 public class LocalDateEditor extends PropertyEditorSupport {
 
     @Override
-    public void setAsText(String text) {
+    public void setAsText(String text)  throws IllegalArgumentException {
         if(text.equals(""))
             setValue(null);
         else
             setValue(LocalDate.parse(text));
     }
 
-    @Override
-    public String getAsText() {
-
-        return  "0";
-    }
 }

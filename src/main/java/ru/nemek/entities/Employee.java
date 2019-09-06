@@ -1,11 +1,11 @@
 package  ru.nemek.entities;
 
-
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
+
 
 @Component
 @Entity
@@ -24,6 +24,10 @@ public class Employee {
     private String patronymic;
 
     private LocalDate birthday;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPosition")
+    private Position position;
 
     public Employee() {
     }
@@ -68,6 +72,14 @@ public class Employee {
         this.birthday = birthday;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,6 +101,9 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", patronymic='" + patronymic + '\'' +
                 ", birthday=" + birthday +
+                ", position=" + position +
                 '}';
     }
+
+
 }

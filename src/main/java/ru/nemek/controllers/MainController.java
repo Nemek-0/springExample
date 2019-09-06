@@ -6,8 +6,11 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.nemek.editor.LocalDateEditor;
+import ru.nemek.editor.PositionEditor;
 import ru.nemek.entities.Employee;
+import ru.nemek.entities.Position;
 import ru.nemek.service.EmployeeService;
+import ru.nemek.service.PositionService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,6 +20,8 @@ public class MainController {
 
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
+    private PositionService positionService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView mainPage() {
@@ -30,14 +35,17 @@ public class MainController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editPage(@PathVariable("id") int id){
         Employee employee = employeeService.getById(id);
+        List<Position> positions = positionService.getAll();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editEmployee");
         modelAndView.addObject("employee", employee);
+        modelAndView.addObject("positions", positions);
         return modelAndView;
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public ModelAndView editEmployee(@ModelAttribute("employee") Employee employee){
+        System.out.println(employee);
         ModelAndView modelAndView = new ModelAndView();
         employeeService.update(employee);
         modelAndView.setViewName("redirect:/");
@@ -48,6 +56,8 @@ public class MainController {
     public ModelAndView addPage(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("addEmployee");
+        modelAndView.addObject("employee", new Employee());
+        modelAndView.addObject("positions", positionService.getAll());
         return modelAndView;
     }
 
@@ -67,9 +77,15 @@ public class MainController {
     }
 
     @InitBinder("employee")
-    public void initBinder(WebDataBinder binder) {
+    public void localDataBinder(WebDataBinder binder) {
         binder.registerCustomEditor(LocalDate.class, "birthday", new LocalDateEditor());
+        binder.registerCustomEditor(Position.class, "position", new PositionEditor());
     }
+
+    /*@InitBinder("position")
+    public void positionBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(LocalDate.class, "birthday", new LocalDateEditor());
+    }*/
 
 
 }

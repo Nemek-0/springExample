@@ -15,7 +15,7 @@
         <th>Фамилия</th>
         <th>Имя</th>
         <th>Отчество</th>
-        <th>ДР</th>
+        <th>Должность</th>
         <th>Действия</th>
     </tr>
     <c:forEach var="employee" items="${employees}">
@@ -24,7 +24,7 @@
             <td>${employee.lastName}</td>
             <td>${employee.firstName}</td>
             <td>${employee.patronymic}</td>
-            <td>${employee.birthday}</td>
+            <td>${employee.position.name}</td>
             <td>
                 <a href="/edit/${employee.id}">Изменить</a>
                 <a href="/delete/${employee.id}">Удалить</a>
