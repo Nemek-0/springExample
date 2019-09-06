@@ -33,5 +33,22 @@
         </form:select>
         <input type="submit" value="Сохранить"/>
     </form:form>
+    <table>
+        <tr>
+            <th>Тип</th>
+            <th>Номер</th>
+            <th>Действия</th>
+        </tr>
+        <c:forEach var="phone" items="${employee.phones}">
+            <tr>
+                <td>${phone.type}</td>
+                <td>${phone.number}</td>
+                <td>
+                    <a href="/edit/${employee.id}/phone/${phone.id}">Изменить</a>
+                    <a href="/edit/${employee.id}/phone/${phone.id}">Удалить</a>
+                 </td>
+            </tr>
+        </c:forEach>
+    </table>
 </body>
 </html>

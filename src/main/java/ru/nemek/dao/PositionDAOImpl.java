@@ -9,7 +9,7 @@ import ru.nemek.entities.Position;
 import java.util.List;
 
 @Repository
-public class PositionDAOIMP implements PositionDAO {
+public class PositionDAOImpl implements PositionDAO {
     @Autowired
     private SessionFactory sessionFactory;
 

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -28,6 +30,9 @@ public class Employee {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPosition")
     private Position position;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Phone> phones = new ArrayList<>();
 
     public Employee() {
     }
@@ -80,6 +85,14 @@ public class Employee {
         this.position = position;
     }
 
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -102,8 +115,7 @@ public class Employee {
                 ", patronymic='" + patronymic + '\'' +
                 ", birthday=" + birthday +
                 ", position=" + position +
+                ", phones=" + phones +
                 '}';
     }
-
-
 }

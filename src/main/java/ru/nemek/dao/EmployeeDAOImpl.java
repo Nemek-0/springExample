@@ -18,7 +18,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public Employee getById(int id) {
         Session session = sessionFactory.getCurrentSession();
         Employee employee = (Employee) session.createQuery("select distinct employee " +
-                "From Employee as employee left join fetch employee.position " +
+                "From Employee as employee left join fetch employee.position left join fetch employee.phones " +
                 "where employee.id = " + id).getSingleResult();
         return session.get(Employee.class, id);
     }
@@ -41,11 +41,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         session.delete(employee);
     }
 
-    //left join fetch employee.phoneNumbers
     @Override
     public List getAll() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select distinct employee From Employee as employee " +
-                "left join fetch employee.position").list();
+                "left join fetch employee.position left join fetch employee.phones ").list();
     }
 }
